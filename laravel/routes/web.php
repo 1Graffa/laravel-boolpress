@@ -18,11 +18,10 @@ Route::get('/', 'HomeController@index')->name('index');
 Auth::routes();
 
 // Route::get('home', 'HomeController@index')->name('home')->middleware('auth');
-
+// la forma seguente è preferita per non ripetere il prefisso del percorso volta in volta
 Route::prefix('admin')
 ->namespace('Admin')
 ->middleware('auth')
 ->group(function () {
-    Route::get('/', 'HomeController@index')
-    ->name('home');
+    Route::get('/', 'HomeController@index')->name('home');
 });
